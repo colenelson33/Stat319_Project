@@ -1,5 +1,4 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 
 df = pd.read_csv("UN.csv")
 print(df.head())
@@ -14,12 +13,8 @@ df_clean = df.dropna(subset=['infantMortality'])
 # Should not be negative values
 print(df_clean[df_clean['infantMortality'] < 0])
 
-summary_stats = df_clean['infantMortality'].describe()
-print(summary_stats)
+# Download cleaned version
 
-plt.hist(df_clean['infantMortality'], bins=20, edgecolor='black')
-plt.title("Distribution of Infant Mortality Rates (per 1,000 live births)")
-plt.xlabel("Infant Mortality Rate")
-plt.ylabel("Number of Countries")
-plt.show()
+df_clean.to_csv("UN_clean.csv", index=False)
+
 
